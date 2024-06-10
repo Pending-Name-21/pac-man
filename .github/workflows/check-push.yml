@@ -57,7 +57,8 @@ jobs:
       - name: Build Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: pac-man-app
-          path: build/libs/*.jar
+          name: pacman-game
+          path: "app/build/libs/pacman-app.jar"
           retention-days: 5
           overwrite: true
+          
