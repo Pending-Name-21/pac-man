@@ -5,4 +5,8 @@ public class Maze {
     
     public void populate()
     {}
+    public IBlock[][] getBlocks()
+    {
+        return maze;
+    }
 }
