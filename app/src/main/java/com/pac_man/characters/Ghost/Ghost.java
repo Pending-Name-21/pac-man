@@ -8,9 +8,11 @@ import com.pac_man.characters.Tools.Direction;
 import com.pac_man.characters.Tools.Position;
 import com.pac_man.characters.Tools.Sprite;
 import java.util.Random;
+import com.bridge.updatehandler.IUpdateSubscriber;
 
 
-public class Ghost extends ACharacter{
+
+public class Ghost extends ACharacter implements IUpdateSubscriber{
     private Sprite sprite;
     private Pacman target;
     private IChase chaseBehaviour;
@@ -59,5 +61,10 @@ public class Ghost extends ACharacter{
     public IChase getChaseBehaviour()
     {
         return chaseBehaviour;
+    }
+
+    @Override
+    public void notifySubscriber() {
+        chase();
     }
 }
