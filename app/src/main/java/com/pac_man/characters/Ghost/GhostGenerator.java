@@ -2,27 +2,30 @@ package com.pac_man.characters.Ghost;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import com.pac_man.characters.Map.Maze;
 import com.pac_man.characters.Tools.Position;
+import com.pac_man.characters.Tools.Tuple;
 import com.pac_man.characters.Tools.Utils;
 
 public class GhostGenerator {
 
-    private List<Ghost> ghosts = new ArrayList<>();
+    private List<Tuple<Ghost, Position>> ghostPositions = new ArrayList<>();
     private int ghostCounter = 0;
+    private final int MAX_GHOST = 4;
 
     public void populate(Maze maze)
     {
         List<Position> emptyPositions = Utils.getEmptyPositions(maze);
-        if (emptyPositions.size() > 0) {
-            for (Position pos : emptyPositions) {
-                IChase nextChaser = getNextChaser();
-                ghostCounter++;
-                ghosts.add(spawnGhost(pos, nextChaser));
-            }
+        for (int i = 0; i < MAX_GHOST && !emptyPositions.isEmpty(); i++){
+            Position pos = emptyPositions.remove(new Random().nextInt(emptyPositions.size()));
+            IChase nextChaser = getNextChaser();
+            Ghost ghost = spawnGhost(pos, nextChaser);
+            ghostPositions.add(new Tuple<>(ghost, pos));
         }
     }
+
     public Ghost spawnGhost(Position position, IChase chase)
     {
         return new Ghost(position, chase);
@@ -42,5 +45,10 @@ public class GhostGenerator {
             default:
                 return new ClydeChaser();
         }
+    }
+
+    public List<Tuple<Ghost, Position>> getGhostsPositions()
+    {
+        return ghostPositions;
     }
 }
