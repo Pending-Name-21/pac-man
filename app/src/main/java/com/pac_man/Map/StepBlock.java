@@ -1,5 +1,4 @@
 package com.pac_man.Map;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,7 +36,13 @@ public class StepBlock implements IBlock {
     }
 
     public void enter(Body body) {
-
+    bodies.add(body);
+    for (Body otherBody : bodies) {
+        if (!otherBody.equals(body) && otherBody.getElement() instanceof ICollisionSubscriber) {
+            ICollisionSubscriber subscriber = (ICollisionSubscriber) otherBody.getElement();
+            subscriber.handleCollision(new String[]{body.getIdentifier()}, Nature.BY);
+        }
+    }
     }
 
     public void exit(Body body) {
