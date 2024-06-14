@@ -2,15 +2,11 @@ package com.pac_man.characters.Ghost;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import com.pac_man.characters.Pacman.Pacman;
 import com.pac_man.characters.Tools.Position;
 import com.pac_man.characters.Tools.Sprite;
-
-
 public class GhostTest {
     Ghost ghost;
     Pacman pacman;
@@ -99,8 +95,5 @@ public class GhostTest {
         //The conditinal here is because flee will randonmically change x or y to flee
         if (x == ghost.getPosition().getX())assertNotEquals(y, ghost.getPosition().getY());    
         else assertNotEquals(x, ghost.getPosition().getX());
-        
-
-
     }
 }
