@@ -4,9 +4,3 @@
 
 # Ignore Gradle build output directory
 build
-
-# Ignore VS Code configuration
-.vscode/
-
-# Ignore application binaries
-app/bin/
