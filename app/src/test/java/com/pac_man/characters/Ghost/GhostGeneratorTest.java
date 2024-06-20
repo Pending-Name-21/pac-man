@@ -9,11 +9,11 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.pac_man.characters.Map.IBlock;
-import com.pac_man.characters.Map.Maze;
-import com.pac_man.characters.Map.TestingBlock;
-import com.pac_man.characters.Tools.Position;
-import com.pac_man.characters.Tools.Tuple;
+import com.pac_man.Map.IBlock;
+import com.pac_man.Map.Maze;
+import com.pac_man.Map.TestingBlock;
+import com.pac_man.characters.Geometry.Position;
+import com.pac_man.characters.Geometry.Tuple;
 
 public class GhostGeneratorTest {
     private GhostGenerator ghostGenerator;

@@ -2,9 +2,9 @@ package com.pac_man.characters.Ghost;
 
 import com.pac_man.characters.ACharacter;
 import com.pac_man.characters.Pacman.Pacman;
-import com.pac_man.characters.Tools.Direction;
-import com.pac_man.characters.Tools.Position;
-import com.pac_man.characters.Tools.Sprite;
+import com.pac_man.characters.Geometry.Direction;
+import com.pac_man.characters.Geometry.Position;
+import com.pac_man.characters.Utils.Sprite;
 import java.util.Random;
 import com.bridge.updatehandler.IUpdateSubscriber;
 public class Ghost extends ACharacter implements IUpdateSubscriber{

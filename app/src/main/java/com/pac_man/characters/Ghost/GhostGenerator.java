@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import com.pac_man.characters.Map.Maze;
-import com.pac_man.characters.Tools.Position;
-import com.pac_man.characters.Tools.Tuple;
-import com.pac_man.characters.Tools.Utils;
+import com.pac_man.Map.Maze;
+import com.pac_man.characters.Geometry.Position;
+import com.pac_man.characters.Geometry.Tuple;
+import com.pac_man.characters.Utils.Utils;
 
 public class GhostGenerator {
 

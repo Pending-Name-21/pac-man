@@ -1,9 +1,9 @@
 package com.pac_man.characters.Pacman;
 
 import com.pac_man.characters.ACharacter;
-import com.pac_man.characters.Tools.Direction;
-import com.pac_man.characters.Tools.Position;
-import com.pac_man.characters.Tools.Sprite;
+import com.pac_man.characters.Geometry.Direction;
+import com.pac_man.characters.Geometry.Position;
+import com.pac_man.characters.Utils.Sprite;
 
 public class Pacman extends ACharacter{
     private Sprite sprite;

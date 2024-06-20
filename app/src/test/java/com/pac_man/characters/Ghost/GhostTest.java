@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import com.pac_man.characters.Pacman.Pacman;
-import com.pac_man.characters.Tools.Position;
-import com.pac_man.characters.Tools.Sprite;
+import com.pac_man.characters.Geometry.Position;
+import com.pac_man.characters.Utils.Sprite;
 public class GhostTest {
     Ghost ghost;
     Pacman pacman;

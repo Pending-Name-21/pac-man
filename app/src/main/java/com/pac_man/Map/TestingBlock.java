@@ -1,4 +1,4 @@
-package com.pac_man.characters.Map;
+package com.pac_man.Map;
 
 public class TestingBlock implements IBlock{
     private boolean canEnter;

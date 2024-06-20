@@ -1,4 +1,4 @@
-package com.pac_man.characters.Tools;
+package com.pac_man.characters.Geometry;
 
 public enum Direction {
     UP,

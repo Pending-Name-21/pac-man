@@ -1,7 +1,7 @@
 package com.pac_man.characters;
 
 import com.pac_man.characters.Pacman.Block;
-import com.pac_man.characters.Tools.Position;
+import com.pac_man.characters.Geometry.Position;
 
 public abstract class ACharacter {
     private Position spawnPosition;

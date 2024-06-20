@@ -1,7 +1,7 @@
 package com.pac_man.characters.Ghost;
 
-import com.pac_man.characters.Tools.Direction;
-import com.pac_man.characters.Tools.Position;
+import com.pac_man.characters.Geometry.Direction;
+import com.pac_man.characters.Geometry.Position;
 
 public class PinkyChaser implements IChase{
 
