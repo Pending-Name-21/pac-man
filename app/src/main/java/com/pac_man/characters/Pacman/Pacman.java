@@ -14,6 +14,7 @@ public class Pacman extends ACharacter implements  ICollisionSubscriber{
     private int amountOfLives;
     private boolean hasPowerSphere;
     private Direction direction;
+    private int consecutiveGhostEaten;
     private Score score;
 
     public Pacman(Position spawnPosition, Sprite sprite) {
@@ -22,6 +23,14 @@ public class Pacman extends ACharacter implements  ICollisionSubscriber{
         this.amountOfLives = 3;
         this.hasPowerSphere = false;
         this.score = new Score(0);
+        this.consecutiveGhostEaten = 0;
+    }
+
+    public void setPowerSphere(boolean  _hasPowerSphere) {
+        this.hasPowerSphere = _hasPowerSphere;
+        if (!hasPowerSphere) {
+            this.consecutiveGhostEaten = 0;
+        }
     }
 
     public void hit() {
@@ -64,6 +73,13 @@ public class Pacman extends ACharacter implements  ICollisionSubscriber{
     public void consumeSphere(){
         this.score.addPoints(Sphere.getValue());
     }
+    public void consumeGhost() {
+        if (hasPowerSphere) {
+            int ghostPoints = 15 * (1 << consecutiveGhostEaten);
+            this.score.addPoints(ghostPoints);
+            consecutiveGhostEaten++;
+        }
+    }
 
     @Override
     public void handleCollision(String[] bodies, Nature nature) {
@@ -71,7 +87,12 @@ public class Pacman extends ACharacter implements  ICollisionSubscriber{
             if (body.equals("Sphere") && nature == Nature.WITH) {
                 consumeSphere();
             }
+            else if (body.equals("Ghost") && nature == Nature.WITH && hasPowerSphere){
+                consumeGhost();                    
+            }
         }
     }
+
+    
 
 }
