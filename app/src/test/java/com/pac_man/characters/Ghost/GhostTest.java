@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import com.bridge.processinputhandler.listeners.KeyboardListener;
 import com.pac_man.characters.Pacman.Pacman;
 import com.pac_man.characters.Tools.Position;
 import com.pac_man.characters.Tools.Sprite;
@@ -13,7 +14,7 @@ public class GhostTest {
 
     @BeforeEach
     void setUP(){
-        pacman = new Pacman(new Position(5, 5), new Sprite());
+        pacman = new Pacman(new Position(5, 5), new Sprite(), new KeyboardListener());
         ghost = new Ghost(new Position(0, 0), new Sprite(), pacman, new BlinkyChaser());
     }
 
