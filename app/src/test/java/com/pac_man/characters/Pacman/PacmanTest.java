@@ -21,7 +21,7 @@ public class PacmanTest {
     private Sprite sprite;
     private TestKeyboardListener testKeyboardListener;
 
-    // Clase simulada para KeyboardListener
+    
     static class TestKeyboardListener extends KeyboardListener {
         private List<String> inputs = new ArrayList<>();
 
