@@ -1,22 +1,29 @@
 package com.pac_man.characters.Pacman;
 
-import com.pac_man.characters.ACharacter;
-import com.pac_man.characters.Tools.Direction;
-import com.pac_man.characters.Tools.Position;
-import com.pac_man.characters.Tools.Sprite;
-import com.bridge.updatehandler.IUpdateSubscriber;
 import java.util.List;
-import com.bridge.processinputhandler.listeners.*;
+
+import com.bridge.processinputhandler.listeners.KeyboardListener;
+import com.bridge.updatehandler.IUpdateSubscriber;
+import com.pac_man.Collectables.Sphere;
+import com.pac_man.Collisions.ICollisionSubscriber;
+import com.pac_man.Collisions.Nature;
+import com.pac_man.characters.ACharacter;
+import com.pac_man.characters.Geometry.Direction;
+import com.pac_man.characters.Geometry.Position;
+import com.pac_man.characters.Score.Score;
+import com.pac_man.characters.Utils.Sprite;
 
 /**
  * Represents the Pacman character in the game.
  */
-public class Pacman extends ACharacter implements IUpdateSubscriber{
+public class Pacman extends ACharacter implements  ICollisionSubscriber, IUpdateSubscriber{
     Sprite sprite;
     int amountOfLives;
     private boolean hasPowerSphere;
     private Direction direction;
     private KeyboardListener keyboardListener;
+    private int consecutiveGhostEaten;
+    private Score score;
 
 
     /**
@@ -32,9 +39,16 @@ public class Pacman extends ACharacter implements IUpdateSubscriber{
         this.amountOfLives = 3;
         this.hasPowerSphere = false;
         this.keyboardListener = keyboardListener;
+        this.score = new Score(0);
+        this.consecutiveGhostEaten = 0;
     }
 
-
+    public void setPowerSphere(boolean  _hasPowerSphere) {
+        this.hasPowerSphere = _hasPowerSphere;
+        if (!hasPowerSphere) {
+            this.consecutiveGhostEaten = 0;
+        }
+    }
 
     /**
      * Reduces Pacman's lives by one. If lives reach zero, triggers game over logic. Otherwise, triggers respawn logic.
@@ -129,7 +143,6 @@ public class Pacman extends ACharacter implements IUpdateSubscriber{
         return this.direction;
     }
 
-
     /**
      * Updates Pacman's state based on the keyboard input events.
      */
@@ -153,4 +166,33 @@ public class Pacman extends ACharacter implements IUpdateSubscriber{
             }
         }
     }
+
+     public Score getScore(){
+        return this.score;
+    }
+
+    public void consumeSphere(){
+        this.score.addPoints(Sphere.getValue());
+    }
+
+    public void consumeGhost() {
+        if (hasPowerSphere) {
+            int ghostPoints = 15 * (1 << consecutiveGhostEaten);
+            this.score.addPoints(ghostPoints);
+            consecutiveGhostEaten++;
+        }
+    }
+
+    @Override
+    public void handleCollision(String[] bodies, Nature nature) {
+        for (String body : bodies) {
+            if (body.equals("Sphere") && nature == Nature.WITH) {
+                consumeSphere();
+            }
+            else if (body.equals("Ghost") && nature == Nature.WITH && hasPowerSphere){
+                consumeGhost();                    
+            }
+        }
+    }
+
 }

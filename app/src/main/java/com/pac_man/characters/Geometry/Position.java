@@ -1,4 +1,4 @@
-package com.pac_man.characters.Tools;
+package com.pac_man.characters.Geometry;
 
 import java.util.Objects;
 

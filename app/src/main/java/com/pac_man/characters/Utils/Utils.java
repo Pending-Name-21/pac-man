@@ -1,10 +1,11 @@
-package com.pac_man.characters.Tools;
+package com.pac_man.characters.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.pac_man.characters.Map.IBlock;
-import com.pac_man.characters.Map.Maze;
+import com.pac_man.Map.IBlock;
+import com.pac_man.Map.Maze;
+import com.pac_man.characters.Geometry.Position;
 
 public class Utils {
         public static List<Position> getEmptyPositions(Maze maze) {

@@ -19,6 +19,11 @@ public class Maze {
     public Maze() {
         this.maze = new IBlock[NUM_ROWS][NUM_COLS];
     }
+    
+    public Maze(IBlock[][] maze)
+    {
+        this.maze = maze;
+    }
 
     public IBlock[][] getBlocks() {
         return maze;

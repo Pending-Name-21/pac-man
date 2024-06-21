@@ -10,9 +10,9 @@ import org.junit.jupiter.api.Test;
 import com.bridge.processinputhandler.listeners.InputListener;
 import com.bridge.processinputhandler.listeners.KeyboardListener;
 import com.pac_man.characters.Pacman.Pacman;
-import com.pac_man.characters.Tools.Direction;
-import com.pac_man.characters.Tools.Position;
-import com.pac_man.characters.Tools.Sprite;
+import com.pac_man.characters.Geometry.Direction;
+import com.pac_man.characters.Geometry.Position;
+import com.pac_man.characters.Utils.Sprite;
 
 
 public class PacmanTest {

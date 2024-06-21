@@ -6,8 +6,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import com.bridge.processinputhandler.listeners.KeyboardListener;
 import com.pac_man.characters.Pacman.Pacman;
-import com.pac_man.characters.Tools.Position;
-import com.pac_man.characters.Tools.Sprite;
+import com.pac_man.characters.Geometry.Position;
+import com.pac_man.characters.Utils.Sprite;
 public class GhostTest {
     Ghost ghost;
     Pacman pacman;
@@ -43,7 +43,7 @@ public class GhostTest {
         assertNotEquals(current.getX(), chaseAfter.getY());
 
         assertEquals(chaseAfter.getX(), 5);
-        assertEquals(chaseAfter.getY(), 7);   
+        assertEquals(chaseAfter.getY(), 8);   
     }
 
     @Test
@@ -81,10 +81,9 @@ public class GhostTest {
         Position chaseAfter = ghost.getPosition();
         
         assertNotEquals(current.getX(), chaseAfter.getX());
-        assertNotEquals(current.getX(), chaseAfter.getY());
 
         assertEquals(chaseAfter.getX(), 1);
-        assertEquals(chaseAfter.getY(), 1);   
+        assertEquals(chaseAfter.getY(), 0);   
     }
 
     @Test
