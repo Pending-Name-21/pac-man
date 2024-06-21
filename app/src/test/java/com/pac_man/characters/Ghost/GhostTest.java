@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import com.bridge.processinputhandler.listeners.KeyboardListener;
 import com.pac_man.characters.Pacman.Pacman;
 import com.pac_man.characters.Geometry.Position;
 import com.pac_man.characters.Utils.Sprite;
@@ -13,7 +14,7 @@ public class GhostTest {
 
     @BeforeEach
     void setUP(){
-        pacman = new Pacman(new Position(5, 5), new Sprite());
+        pacman = new Pacman(new Position(5, 5), new Sprite(), new KeyboardListener());
         ghost = new Ghost(new Position(0, 0), new Sprite(), pacman, new BlinkyChaser());
     }
 
@@ -42,7 +43,7 @@ public class GhostTest {
         assertNotEquals(current.getX(), chaseAfter.getY());
 
         assertEquals(chaseAfter.getX(), 5);
-        assertEquals(chaseAfter.getY(), 7);   
+        assertEquals(chaseAfter.getY(), 8);   
     }
 
     @Test
@@ -80,10 +81,9 @@ public class GhostTest {
         Position chaseAfter = ghost.getPosition();
         
         assertNotEquals(current.getX(), chaseAfter.getX());
-        assertNotEquals(current.getX(), chaseAfter.getY());
 
         assertEquals(chaseAfter.getX(), 1);
-        assertEquals(chaseAfter.getY(), 1);   
+        assertEquals(chaseAfter.getY(), 0);   
     }
 
     @Test

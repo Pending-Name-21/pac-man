@@ -6,5 +6,6 @@ public class Sprite {
     public static Sprite DOWN;
     public static Sprite RIGHT;
     public static Sprite UP;
+    public static Sprite DEFAULT;
     
 }
