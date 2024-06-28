@@ -4,7 +4,7 @@ import com.pac_man.characters.ACharacter;
 import com.pac_man.characters.Pacman.Pacman;
 import com.pac_man.characters.Geometry.Direction;
 import com.pac_man.characters.Geometry.Position;
-import com.pac_man.characters.Utils.Sprite;
+import com.bridge.renderHandler.sprite.Sprite;
 import java.util.Random;
 import com.bridge.updatehandler.IUpdateSubscriber;
 public class Ghost extends ACharacter implements IUpdateSubscriber{

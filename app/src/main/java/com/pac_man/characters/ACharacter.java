@@ -1,12 +1,12 @@
 package com.pac_man.characters;
 
-import com.pac_man.characters.Pacman.Block;
+import com.pac_man.Map.IBlock;
 import com.pac_man.characters.Geometry.Position;
 
 public abstract class ACharacter {
-    private Position spawnPosition;
+    protected Position spawnPosition;
     private Position position;
-    private Block current;
+    private IBlock current;
 
     public ACharacter(Position spawnPosition) {
         this.spawnPosition = spawnPosition;
@@ -25,11 +25,11 @@ public abstract class ACharacter {
         this.position = position;
     }
 
-    public Block getCurrent() {
+    public IBlock getCurrent() {
         return this.current;
     }
 
-    public void setCurrent(Block current) {
+    public void setCurrent(IBlock current) {
         this.current = current;
     }
 }

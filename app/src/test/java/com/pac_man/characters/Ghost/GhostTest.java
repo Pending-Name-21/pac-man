@@ -2,20 +2,27 @@ package com.pac_man.characters.Ghost;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
+import java.nio.file.Paths;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import com.bridge.processinputhandler.listeners.KeyboardListener;
+import com.bridge.renderHandler.sprite.Coord;
+import com.bridge.renderHandler.sprite.Size;
+import com.bridge.renderHandler.sprite.Sprite;
 import com.pac_man.characters.Pacman.Pacman;
 import com.pac_man.characters.Geometry.Position;
-import com.pac_man.characters.Utils.Sprite;
 public class GhostTest {
     Ghost ghost;
     Pacman pacman;
+    Sprite sprite;
 
     @BeforeEach
     void setUP(){
-        pacman = new Pacman(new Position(5, 5), new Sprite(), new KeyboardListener());
-        ghost = new Ghost(new Position(0, 0), new Sprite(), pacman, new BlinkyChaser());
+        pacman = new Pacman(new Position(5, 5), new KeyboardListener());
+        sprite = new Sprite(new Coord(0, 0), new Size(1.0,1.0), Paths.get(""));
+        ghost = new Ghost(new Position(0, 0), sprite, pacman, new BlinkyChaser());
     }
 
     @Test
@@ -33,7 +40,7 @@ public class GhostTest {
 
     @Test
     void testChaseInky() {
-        ghost = new Ghost(new Position(0, 0), new Sprite(), pacman, new InkyChaser());
+        ghost = new Ghost(new Position(0, 0),sprite, pacman, new InkyChaser());
         Position current = ghost.getPosition();
         pacman.down();
         ghost.chase();
@@ -48,7 +55,7 @@ public class GhostTest {
 
     @Test
     void testChaseClydeBehaviour1() {
-        ghost = new Ghost(new Position(4, 5), new Sprite(), pacman, new ClydeChaser());
+        ghost = new Ghost(new Position(4, 5),sprite, pacman, new ClydeChaser());
         Position current = ghost.getPosition();
         ghost.chase();
         Position chaseAfter = ghost.getPosition();
@@ -61,7 +68,7 @@ public class GhostTest {
     }
     @Test
     void testChaseClydeBehaviour2() {
-        ghost = new Ghost(new Position(0, 0), new Sprite(), pacman, new ClydeChaser());
+        ghost = new Ghost(new Position(0, 0),sprite, pacman, new ClydeChaser());
         Position current = ghost.getPosition();
         ghost.chase();
         Position chaseAfter = ghost.getPosition();
@@ -74,7 +81,7 @@ public class GhostTest {
     }
     @Test
     void testChasePinky() {
-        ghost = new Ghost(new Position(0, 0), new Sprite(), pacman, new PinkyChaser());
+        ghost = new Ghost(new Position(0, 0),sprite, pacman, new PinkyChaser());
         Position current = ghost.getPosition();
         pacman.up();
         ghost.chase();
