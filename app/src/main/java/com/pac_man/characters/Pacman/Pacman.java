@@ -11,7 +11,8 @@ import com.pac_man.characters.ACharacter;
 import com.pac_man.characters.Geometry.Direction;
 import com.pac_man.characters.Geometry.Position;
 import com.pac_man.characters.Score.Score;
-import com.pac_man.characters.Utils.Sprite;
+import com.bridge.renderHandler.sprite.Sprite;
+import com.bridge.renderHandler.sprite.Coord;
 
 /**
  * Represents the Pacman character in the game.
@@ -43,6 +44,21 @@ public class Pacman extends ACharacter implements  ICollisionSubscriber, IUpdate
         this.consecutiveGhostEaten = 0;
     }
 
+    /**
+     * Constructs a Pacman instance with the specified spawn position, sprite, and keyboard listener.
+     *
+     * @param spawnPosition the initial position of Pacman
+     * @param keyboardListener the keyboard listener for capturing input events
+     */
+    public Pacman(Position spawnPosition, KeyboardListener keyboardListener) {
+        super(spawnPosition);
+        this.amountOfLives = 3;
+        this.hasPowerSphere = false;
+        this.keyboardListener = keyboardListener;
+        this.score = new Score(0);
+        this.consecutiveGhostEaten = 0;
+    }
+
     public void setPowerSphere(boolean  _hasPowerSphere) {
         this.hasPowerSphere = _hasPowerSphere;
         if (!hasPowerSphere) {
@@ -63,7 +79,6 @@ public class Pacman extends ACharacter implements  ICollisionSubscriber, IUpdate
      * Moves Pacman up and updates the sprite and direction.
      */
     public void up() {
-        this.sprite = Sprite.UP;
         this.direction = Direction.UP;
         move(Direction.UP);
     }
@@ -72,7 +87,6 @@ public class Pacman extends ACharacter implements  ICollisionSubscriber, IUpdate
      * Moves Pacman down and updates the sprite and direction.
      */
     public void down() {
-        this.sprite = Sprite.DOWN;
         this.direction = Direction.DOWN;
         move(Direction.DOWN);
     }
@@ -81,7 +95,6 @@ public class Pacman extends ACharacter implements  ICollisionSubscriber, IUpdate
      * Moves Pacman left and updates the sprite and direction.
      */
     public void left() {
-        this.sprite = Sprite.LEFT;
         this.direction = Direction.LEFT;
         move(Direction.LEFT);
     }
@@ -90,7 +103,6 @@ public class Pacman extends ACharacter implements  ICollisionSubscriber, IUpdate
      * Moves Pacman right and updates the sprite and direction.
      */
     public void right() {
-        this.sprite = Sprite.RIGHT;
         this.direction = Direction.RIGHT;
         move(Direction.RIGHT);
     }
@@ -103,6 +115,10 @@ public class Pacman extends ACharacter implements  ICollisionSubscriber, IUpdate
     private void move(Direction direction) {
         Position currentPosition = this.getPosition();
         Position newPosition = moveInDirection(currentPosition, direction);
+        Coord newCoord = new Coord(newPosition.getX(), newPosition.getY());
+        if (this.sprite != null) {
+            this.sprite.setPosition(newCoord);
+        }
         this.setPosition(newPosition);
     }
 

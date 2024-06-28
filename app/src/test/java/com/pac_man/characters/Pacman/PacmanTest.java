@@ -12,13 +12,12 @@ import com.bridge.processinputhandler.listeners.KeyboardListener;
 import com.pac_man.characters.Pacman.Pacman;
 import com.pac_man.characters.Geometry.Direction;
 import com.pac_man.characters.Geometry.Position;
-import com.pac_man.characters.Utils.Sprite;
+
 
 
 public class PacmanTest {
 
     private Pacman pacman;
-    private Sprite sprite;
     private TestKeyboardListener testKeyboardListener;
 
     
@@ -37,9 +36,8 @@ public class PacmanTest {
 
     @BeforeEach
     void setUp() {
-        sprite = new Sprite();
         testKeyboardListener = new TestKeyboardListener();
-        pacman = new Pacman(new Position(0, 0), sprite, testKeyboardListener);
+        pacman = new Pacman(new Position(0, 0), testKeyboardListener);
     }
 
     @Test
@@ -63,7 +61,6 @@ public class PacmanTest {
     void testMoveUp() {
         pacman.up();
         assertEquals(Direction.UP, pacman.getDirection());
-        assertEquals(Sprite.UP, pacman.sprite);
         assertEquals(new Position(0, -1), pacman.getPosition());
     }
 
@@ -71,7 +68,6 @@ public class PacmanTest {
     void testMoveDown() {
         pacman.down();
         assertEquals(Direction.DOWN, pacman.getDirection());
-        assertEquals(Sprite.DOWN, pacman.sprite);
         assertEquals(new Position(0, 1), pacman.getPosition());
     }
 
@@ -79,7 +75,6 @@ public class PacmanTest {
     void testMoveLeft() {
         pacman.left();
         assertEquals(Direction.LEFT, pacman.getDirection());
-        assertEquals(Sprite.LEFT, pacman.sprite);
         assertEquals(new Position(-1, 0), pacman.getPosition());
     }
 
@@ -87,7 +82,6 @@ public class PacmanTest {
     void testMoveRight() {
         pacman.right();
         assertEquals(Direction.RIGHT, pacman.getDirection());
-        assertEquals(Sprite.RIGHT, pacman.sprite);
         assertEquals(new Position(1, 0), pacman.getPosition());
     }
 
@@ -96,7 +90,6 @@ public class PacmanTest {
         testKeyboardListener.setInputs(List.of("UP"));
         pacman.notifySubscriber();
         assertEquals(Direction.UP, pacman.getDirection());
-        assertEquals(Sprite.UP, pacman.sprite);
         assertEquals(new Position(0, -1), pacman.getPosition());
     }
 
@@ -105,7 +98,6 @@ public class PacmanTest {
         testKeyboardListener.setInputs(List.of("DOWN"));
         pacman.notifySubscriber();
         assertEquals(Direction.DOWN, pacman.getDirection());
-        assertEquals(Sprite.DOWN, pacman.sprite);
         assertEquals(new Position(0, 1), pacman.getPosition());
     }
 
@@ -114,7 +106,6 @@ public class PacmanTest {
         testKeyboardListener.setInputs(List.of("LEFT"));
         pacman.notifySubscriber();
         assertEquals(Direction.LEFT, pacman.getDirection());
-        assertEquals(Sprite.LEFT, pacman.sprite);
         assertEquals(new Position(-1, 0), pacman.getPosition());
     }
 
@@ -123,7 +114,6 @@ public class PacmanTest {
         testKeyboardListener.setInputs(List.of("RIGHT"));
         pacman.notifySubscriber();
         assertEquals(Direction.RIGHT, pacman.getDirection());
-        assertEquals(Sprite.RIGHT, pacman.sprite);
         assertEquals(new Position(1, 0), pacman.getPosition());
     }
 
