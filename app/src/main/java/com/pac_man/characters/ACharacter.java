@@ -1,10 +1,10 @@
 package com.pac_man.characters;
 
-import com.pac_man.characters.Pacman.Block;
 import com.pac_man.characters.Geometry.Position;
+import com.pac_man.characters.Pacman.Block;
 
 public abstract class ACharacter {
-    private Position spawnPosition;
+    protected Position spawnPosition;
     private Position position;
     private Block current;
 

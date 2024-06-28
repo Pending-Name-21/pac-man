@@ -55,13 +55,9 @@ public class Pacman extends ACharacter implements  ICollisionSubscriber, IUpdate
      */
     public void hit() {
         this.amountOfLives--;
-        if (this.amountOfLives <= 0) {
-            // Game over logic
-        } else {
-            // Respawn logic
-        }
+        spawn();
     }
-    
+
 
     /**
      * Moves Pacman up and updates the sprite and direction.
@@ -176,6 +172,7 @@ public class Pacman extends ACharacter implements  ICollisionSubscriber, IUpdate
     }
 
     public void consumeGhost() {
+        hit();
         if (hasPowerSphere) {
             int ghostPoints = 15 * (1 << consecutiveGhostEaten);
             this.score.addPoints(ghostPoints);
