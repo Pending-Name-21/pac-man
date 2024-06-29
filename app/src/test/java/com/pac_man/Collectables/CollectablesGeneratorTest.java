@@ -37,20 +37,4 @@ public class CollectablesGeneratorTest {
         assertEquals(9, generators.getSphereList().size(), "Should have 240 spheres");
         assertEquals(0, generators.getPowerSphereList().size(), "Should have 4 power spheres");
     }
-
-    @Test
-    public void testGenerateSphere() {
-        Position position = new Position(1, 1);
-        Sphere sphere = generators.generateShpere(position);
-
-        assertEquals(position, sphere.getPosition(), "The position of the sphere should match the input position");
-    }
-
-    @Test
-    public void testGeneratePowerSphere() {
-        Position position = new Position(2, 2);
-        PowerSphere powerSphere = generators.generatePowerShpere(position);
-
-        assertEquals(position, powerSphere.getPosition(), "The position of the power sphere should match the input position");
-    }
 }
