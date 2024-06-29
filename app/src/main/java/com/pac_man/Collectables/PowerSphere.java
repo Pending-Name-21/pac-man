@@ -1,6 +1,7 @@
 package com.pac_man.Collectables;
 
 import com.bridge.renderHandler.sprite.Sprite;
+import com.pac_man.Collisions.Body;
 import com.pac_man.Collisions.Nature;
 import com.pac_man.characters.Geometry.Position;
 
@@ -32,9 +33,10 @@ public class PowerSphere extends APowerUp {
 
     @Override
     public void handleCollision(String[] bodies, Nature nature) {
-        for (String bodyP : bodies) {
-            if (bodyP.equals("Pacman") && nature == Nature.WITH) {
+        for (String body : bodies) {
+            if (body.equals("Pacman") && nature == Nature.BY) {
                 consumeSphere();
+                block.exit(new Body(body,this));
             }
         }
     }

@@ -5,15 +5,12 @@ import com.pac_man.Collisions.ICollisionSubscriber;
 import com.pac_man.Collisions.Nature;
 import com.pac_man.Map.IBlock;
 import com.bridge.renderHandler.sprite.Sprite;
-import com.bridge.renderHandler.sprite.Sprite;
-import com.pac_man.Collisions.ICollisionSubscriber;
-import com.pac_man.Collisions.Nature;
 import com.pac_man.characters.Geometry.Position;
 
 public class Sphere implements ICollisionSubscriber {
     
     private static final int VALUE = 10;
-    private  IBlock block;
+    private IBlock block;
     private Sprite sprite;
     private Position position;
     private boolean isConsume;
@@ -45,7 +42,8 @@ public class Sphere implements ICollisionSubscriber {
     @Override
     public void handleCollision(String[] bodies, Nature nature) {
         for (String body : bodies) {
-            if (body.equals("Sphere") && nature == Nature.BY) {
+            if (body.equals("Pacman") && nature == Nature.BY) {
+                consumeSphere();
                 block.exit(new Body(body,this));
             }
         }
