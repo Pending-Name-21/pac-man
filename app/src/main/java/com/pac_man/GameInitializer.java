@@ -23,7 +23,7 @@ import java.util.List;
 
 public class GameInitializer {
     public void init() {
-        URL pacmanImg = getClass().getResource("/com/pac_man/images/pacman.png");
+        URL pacmanImg = getClass().getResource("app/src/main/java/com/pac_man/Resources/PacMan/pr1.png");
 
         Path pacmanImgPath = null;
         try {
@@ -58,10 +58,10 @@ public class GameInitializer {
 
     private List<Ghost> getGhosts(Pacman pacman) {
 
-        URL blinkyImg = getClass().getResource("/com/pac_man/images/blinky.png");
-        URL clydeImg = getClass().getResource("/com/pac_man/images/clyde.png");
-        URL inkyImg = getClass().getResource("/com/pac_man/images/inky.png");
-        URL pinkyImg = getClass().getResource("/com/pac_man/images/pinky.png");
+        URL blinkyImg = getClass().getResource("app/src/main/java/com/pac_man/Resources/Ghosts/Blinky/red1.png");
+        URL clydeImg = getClass().getResource("app/src/main/java/com/pac_man/Resources/Ghosts/Clyde/yell1.png");
+        URL inkyImg = getClass().getResource("app/src/main/java/com/pac_man/Resources/Ghosts/Inky/blue1.png");
+        URL pinkyImg = getClass().getResource("app/src/main/java/com/pac_man/Resources/Ghosts/Pinky/pink1.png");
 
 
         Path blinkyImgPath = null;
