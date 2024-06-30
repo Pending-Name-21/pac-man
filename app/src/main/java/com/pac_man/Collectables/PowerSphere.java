@@ -1,23 +1,19 @@
 package com.pac_man.Collectables;
 
-import com.pac_man.Collisions.Body;
-import com.pac_man.Collisions.ICollisionSubscriber;
-import com.pac_man.Collisions.Nature;
-import com.pac_man.Map.IBlock;
 import com.bridge.renderHandler.sprite.Sprite;
+import com.pac_man.Collisions.Body;
+import com.pac_man.Collisions.Nature;
 import com.pac_man.characters.Geometry.Position;
 
-public class Sphere implements ICollisionSubscriber {
-    
-    private static final int VALUE = 10;
-    private IBlock block;
-    private Sprite sprite;
+public class PowerSphere extends APowerUp {
+
     private Position position;
+    private Sprite sprite;
     private boolean isConsume;
 
-    public Sphere(Sprite sprite, Position position) {
+    public PowerSphere(Sprite sprite, Position initPosition) {
         this.sprite = sprite;
-        this.position = position;
+        this.position = initPosition;
         isConsume = false;
     }
 
@@ -29,10 +25,6 @@ public class Sphere implements ICollisionSubscriber {
     }
     public Sprite getSprite() {
         return sprite;
-    }
-
-    public static int getValue() {
-        return VALUE;
     }
 
     public void consumeSphere() {
@@ -49,4 +41,5 @@ public class Sphere implements ICollisionSubscriber {
         }
     }
 
+    
 }
