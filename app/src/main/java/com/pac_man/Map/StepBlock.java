@@ -7,7 +7,7 @@ import com.pac_man.Collisions.Body;
 import com.pac_man.Collisions.ICollisionSubscriber;
 import com.pac_man.Collisions.Nature;
 
-public class StepBlock implements IBlock {
+public class StepBlock implements IBlock, ICollisionSubscriber {
     private Maze maze;
     private List<Body> bodies;
     private Sprite sprite;
@@ -49,5 +49,18 @@ public class StepBlock implements IBlock {
         bodies.remove(body);
     }
     
+    private void checkCollision() {
+        if (bodies.size() > 1) {
+            String[] bodyIdentifiers = bodies.stream().map(Body::getIdentifier).toArray(String[]::new);
+            for (Body body : bodies) {
+                body.getElement().handleCollision(bodyIdentifiers, Nature.WITH);
+            }
+        }
+    }
+
+    @Override
+    public void handleCollision(String[] bodies, Nature nature) {        
+        System.out.println("Collision detected in StepBlock!");
+    }
 
 }
