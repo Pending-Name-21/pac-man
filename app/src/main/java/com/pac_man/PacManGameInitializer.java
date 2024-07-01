@@ -13,31 +13,27 @@ import com.pac_man.characters.Ghost.ClydeChaser;
 import com.pac_man.characters.Ghost.InkyChaser;
 import com.pac_man.characters.Ghost.PinkyChaser;
 import com.pac_man.characters.Pacman.Pacman;
-
-import java.net.URISyntaxException;
-import java.net.URL;
+import com.bridge.initializerhandler.GameInitializer;
+import com.bridge.gamesettings.AGameSettings;
+import com.bridge.processinputhandler.ProcessInputPublisher;
+import com.bridge.initializerhandler.IIinitializerSubscriber;
+import com.bridge.processinputhandler.EventType;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameInitializer {
-    public void init() {
-        URL pacmanImg = getClass().getResource("app/src/main/java/com/pac_man/Resources/PacMan/pr1.png");
 
-        Path pacmanImgPath = null;
-        try {
-            pacmanImgPath = Paths.get(pacmanImg.toURI());
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
+public class PacManGameInitializer {
+    public void init() {
+        Maze maze = new Maze();
+        maze.populateFromFile("app/src/main/java/com/pac_man/Resources/MazeElement/Map.txt");
 
         Sound pacmanSound = new Sound(null); // sounds aren't implemented
 
         Sprite pacManSprite = new Sprite(
                 new Coord(0, 0),
                 new Size(10.0, 10.0),
-                pacmanImgPath
+                Path.of("app/src/main/java/com/pac_man/Resources/PacMan/pr1.png")
         );
 
         Pacman pacman = new Pacman(
@@ -46,65 +42,45 @@ public class GameInitializer {
                 new KeyboardListener()
         );
 
-        List<Ghost> ghosts = getGhosts(pacman);
+        pacman.spawn();
 
+        List<Ghost> ghosts = getGhosts(pacman);
         for (Ghost ghost : ghosts) {
             ghost.spawn();
         }
 
-        Maze maze = new Maze();
+
+        
+
     }
 
 
     private List<Ghost> getGhosts(Pacman pacman) {
 
-        URL blinkyImg = getClass().getResource("app/src/main/java/com/pac_man/Resources/Ghosts/Blinky/red1.png");
-        URL clydeImg = getClass().getResource("app/src/main/java/com/pac_man/Resources/Ghosts/Clyde/yell1.png");
-        URL inkyImg = getClass().getResource("app/src/main/java/com/pac_man/Resources/Ghosts/Inky/blue1.png");
-        URL pinkyImg = getClass().getResource("app/src/main/java/com/pac_man/Resources/Ghosts/Pinky/pink1.png");
-
-
-        Path blinkyImgPath = null;
-        Path clydeImgPath = null;
-        Path inkyImgPath = null;
-        Path pinkyImgPath = null;
-
-        try {
-            blinkyImgPath = Paths.get(blinkyImg.toURI());
-            clydeImgPath = Paths.get(clydeImg.toURI());
-            inkyImgPath = Paths.get(inkyImg.toURI());
-            pinkyImgPath = Paths.get(pinkyImg.toURI());
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
-
         Sprite blinkySprite = new Sprite(
                 new Coord(0, 0),
                 new Size(10.0, 10.0),
-                blinkyImgPath
+                Path.of("app/src/main/java/com/pac_man/Resources/Ghosts/Blinky/red1.png")
+
         );
 
         Sprite clydeSprite = new Sprite(
                 new Coord(0, 0),
                 new Size(10.0, 10.0),
-                clydeImgPath
+                Path.of("app/src/main/java/com/pac_man/Resources/Ghosts/Clyde/yell1.png")
         );
 
         Sprite inkySprite = new Sprite(
                 new Coord(0, 0),
                 new Size(10.0, 10.0),
-                inkyImgPath
+                Path.of("app/src/main/java/com/pac_man/Resources/Ghosts/Inky/blue1.png")
         );
 
         Sprite pinkySprite = new Sprite(
                 new Coord(0, 0),
                 new Size(10.0, 10.0),
-                pinkyImgPath
+                Path.of("app/src/main/java/com/pac_man/Resources/Ghosts/Pinky/pink1.png")
         );
-
-
-
-        Maze maze = new Maze();
 
         Ghost blinky = new Ghost(
                 new Position(0, 0),
