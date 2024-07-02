@@ -6,31 +6,20 @@ import com.bridge.processinputhandler.KeyboardEventManager;
 import com.bridge.renderHandler.builders.SpriteBuilder;
 import com.bridge.renderHandler.repository.SpriteRepository;
 import com.bridge.renderHandler.sound.Sound;
-import com.bridge.renderHandler.sprite.Coord;
-import com.bridge.renderHandler.sprite.Size;
-import com.bridge.renderHandler.sprite.Sprite;
 import com.bridge.updatehandler.UpdatePublisher;
 import com.pac_man.Map.Maze;
 import com.pac_man.characters.Geometry.Position;
 import com.pac_man.characters.Ghost.*;
-import com.pac_man.characters.Ghost.BlinkyChaser;
-import com.pac_man.characters.Ghost.ClydeChaser;
-import com.pac_man.characters.Ghost.InkyChaser;
-import com.pac_man.characters.Ghost.PinkyChaser;
 import com.pac_man.characters.Pacman.Pacman;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-
 
 public class PacManGameInitializer implements IIinitializerSubscriber {
     private Pacman pacman;
     private KeyboardEventManager keyboardEventManager;
     private UpdatePublisher updatePublisher;
-
+    private SpriteRepository spriteRepository;
     public void init() {
 
-        SpriteRepository spriteRepository = new SpriteRepository();
+        this.spriteRepository = new SpriteRepository();
         Maze maze = new Maze();
         maze.populateFromFile("app/src/main/java/com/pac_man/Resources/MazeElement/Map.txt");
 
@@ -57,18 +46,13 @@ public class PacManGameInitializer implements IIinitializerSubscriber {
         keyboardEventManager.subscribe(this.pacman);
 
 
-        SpriteBuilder ghostSpriteBuilder = new SpriteBuilder(spriteRepository);
-        ghostSpriteBuilder.buildCoord(0,0);
-        try {
-            ghostSpriteBuilder.buildPath("app/src/main/java/com/pac_man/Resources/Ghosts/Blinky/red1.png");
-        } catch (NonExistentFilePathException e) {
-            throw new RuntimeException(e);
-        }
-        ghostSpriteBuilder.buildSize(10.0,10.0);
-        ghostSpriteBuilder.assemble();
+        SpriteBuilder ghostBuilder = setGhostsSprites();
 
-        //GhostGenerator generator = new GhostGenerator();
-        //generator.
+
+
+        GhostGenerator generator = new GhostGenerator(ghostBuilder, pacman);
+        generator.populate(maze);
+
 
 
     }
@@ -84,5 +68,46 @@ public class PacManGameInitializer implements IIinitializerSubscriber {
 
     public UpdatePublisher getUpdatePublisher (){
         return this.updatePublisher;
+    }
+
+    private SpriteBuilder setGhostsSprites() {
+        SpriteBuilder ghostSpriteBuilder = new SpriteBuilder(spriteRepository);
+        ghostSpriteBuilder.buildCoord(0,0);
+        try {
+            ghostSpriteBuilder.buildPath("app/src/main/java/com/pac_man/Resources/Ghosts/Blinky/red1.png");
+        } catch (NonExistentFilePathException e) {
+            throw new RuntimeException(e);
+        }
+        ghostSpriteBuilder.buildSize(10.0,10.0);
+        ghostSpriteBuilder.assemble();
+
+        ghostSpriteBuilder.buildCoord(0,0);
+        try {
+            ghostSpriteBuilder.buildPath("app/src/main/java/com/pac_man/Resources/Ghosts/Clyde/yell1.png");
+        } catch (NonExistentFilePathException e) {
+            throw new RuntimeException(e);
+        }
+        ghostSpriteBuilder.buildSize(10.0,10.0);
+        ghostSpriteBuilder.assemble();
+
+        ghostSpriteBuilder.buildCoord(0,0);
+        try {
+            ghostSpriteBuilder.buildPath("app/src/main/java/com/pac_man/Resources/Ghosts/Inky/blue1.png");
+        } catch (NonExistentFilePathException e) {
+            throw new RuntimeException(e);
+        }
+        ghostSpriteBuilder.buildSize(10.0,10.0);
+        ghostSpriteBuilder.assemble();
+
+        ghostSpriteBuilder.buildCoord(0,0);
+        try {
+            ghostSpriteBuilder.buildPath("app/src/main/java/com/pac_man/Resources/Ghosts/Pinky/pink1.png");
+        } catch (NonExistentFilePathException e) {
+            throw new RuntimeException(e);
+        }
+        ghostSpriteBuilder.buildSize(10.0,10.0);
+        ghostSpriteBuilder.assemble();
+
+        return ghostSpriteBuilder;
     }
 }

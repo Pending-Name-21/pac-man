@@ -18,12 +18,10 @@ public class GhostGenerator {
     private List<Tuple<Ghost, Position>> ghostPositions = new ArrayList<>();
     private int ghostCounter = 0;
     private final int MAX_GHOST = 4;
-    private String spritePath = "";
     private Pacman pacman;
 
-    public GhostGenerator(SpriteBuilder spriteBuilder, String spritePath, Pacman pacman) {
+    public GhostGenerator(SpriteBuilder spriteBuilder, Pacman pacman) {
         this.spriteBuilder = spriteBuilder;
-        this.spritePath = spritePath;
         this.pacman = pacman;
 
     }

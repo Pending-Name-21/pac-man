@@ -26,7 +26,7 @@ public class GhostGeneratorTest {
     void setUp(){
         SpriteRepository spriteRepository = new SpriteRepository();
         SpriteBuilder spriteBuilder = new SpriteBuilder(spriteRepository);
-        ghostGenerator = new GhostGenerator(spriteBuilder, "", new Pacman(new Position(1,1)));
+        ghostGenerator = new GhostGenerator(spriteBuilder, new Pacman(new Position(1,1)));
         IBlock[][] blocks = {{new TestingBlock(true), new TestingBlock(true), new TestingBlock(true)},{new TestingBlock(true), new TestingBlock(true), new TestingBlock(true)},{new TestingBlock(true), new TestingBlock(true), new TestingBlock(true)}};
         maze= new Maze(blocks);
     }
