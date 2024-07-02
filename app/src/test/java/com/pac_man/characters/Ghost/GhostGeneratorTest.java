@@ -6,6 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 
+import com.bridge.renderHandler.builders.SpriteBuilder;
+import com.bridge.renderHandler.repository.SpriteRepository;
+import com.pac_man.characters.Pacman.Pacman;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -21,7 +24,9 @@ public class GhostGeneratorTest {
 
     @BeforeEach
     void setUp(){
-        ghostGenerator = new GhostGenerator();
+        SpriteRepository spriteRepository = new SpriteRepository();
+        SpriteBuilder spriteBuilder = new SpriteBuilder(spriteRepository);
+        ghostGenerator = new GhostGenerator(spriteBuilder, "", new Pacman(new Position(1,1)));
         IBlock[][] blocks = {{new TestingBlock(true), new TestingBlock(true), new TestingBlock(true)},{new TestingBlock(true), new TestingBlock(true), new TestingBlock(true)},{new TestingBlock(true), new TestingBlock(true), new TestingBlock(true)}};
         maze= new Maze(blocks);
     }

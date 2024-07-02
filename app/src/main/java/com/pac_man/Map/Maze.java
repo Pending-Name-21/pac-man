@@ -47,11 +47,11 @@ public class Maze {
     private IBlock createBlock(char blockType, int x, int y) {
         switch (blockType) {
             case 'S':
-                return new StepBlock(new Sprite(new Coord(x, y), new Size(1, 1), Paths.get("app/src/main/Resources/general/StepBlock.png")));
+                return new StepBlock(new Sprite(new Coord(x, y), 0, new Size(1, 1), Paths.get("app/src/main/Resources/general/StepBlock.png")));
             case 'W':
-                return new WallBlock(new Sprite(new Coord(x, y), new Size(1, 1), Paths.get("app/src/main/Resources/general/wall.png")));
+                return new WallBlock(new Sprite(new Coord(x, y), 0, new Size(1, 1), Paths.get("app/src/main/Resources/general/wall.png")));
             case 'P':
-                return new SpawnBlock(new Sprite(new Coord(x, y), new Size(1, 1), Paths.get("")));
+                return new SpawnBlock(new Sprite(new Coord(x, y), 0, new Size(1, 1), Paths.get("")));
             default:
                 throw new IllegalArgumentException("Unknown block type: " + blockType);
         }

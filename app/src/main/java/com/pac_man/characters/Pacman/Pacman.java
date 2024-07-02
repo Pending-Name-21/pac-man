@@ -1,8 +1,11 @@
 package com.pac_man.characters.Pacman;
 
 import java.util.List;
+import java.util.Objects;
 
-import com.bridge.processinputhandler.listeners.KeyboardListener;
+
+import CoffeeTime.InputEvents.Keyboard;
+import com.bridge.processinputhandler.IEventSubscriber;
 import com.bridge.updatehandler.IUpdateSubscriber;
 import com.pac_man.Collectables.Sphere;
 import com.pac_man.Collisions.ICollisionSubscriber;
@@ -17,12 +20,11 @@ import com.bridge.renderHandler.sprite.Coord;
 /**
  * Represents the Pacman character in the game.
  */
-public class Pacman extends ACharacter implements  ICollisionSubscriber, IUpdateSubscriber{
+public class Pacman extends ACharacter implements  ICollisionSubscriber, IUpdateSubscriber, IEventSubscriber <Keyboard> {
     Sprite sprite;
     int amountOfLives;
     private boolean hasPowerSphere;
     private Direction direction;
-    private KeyboardListener keyboardListener;
     private int consecutiveGhostEaten;
     private Score score;
 
@@ -32,14 +34,12 @@ public class Pacman extends ACharacter implements  ICollisionSubscriber, IUpdate
      *
      * @param spawnPosition the initial position of Pacman
      * @param sprite the sprite representing Pacman
-     * @param keyboardListener the keyboard listener for capturing input events
      */
-    public Pacman(Position spawnPosition, Sprite sprite, KeyboardListener keyboardListener) {
+    public Pacman(Position spawnPosition, Sprite sprite) {
         super(spawnPosition);
         this.sprite = sprite;
         this.amountOfLives = 3;
         this.hasPowerSphere = false;
-        this.keyboardListener = keyboardListener;
         this.score = new Score(0);
         this.consecutiveGhostEaten = 0;
     }
@@ -48,13 +48,11 @@ public class Pacman extends ACharacter implements  ICollisionSubscriber, IUpdate
      * Constructs a Pacman instance with the specified spawn position, sprite, and keyboard listener.
      *
      * @param spawnPosition the initial position of Pacman
-     * @param keyboardListener the keyboard listener for capturing input events
      */
-    public Pacman(Position spawnPosition, KeyboardListener keyboardListener) {
+    public Pacman(Position spawnPosition) {
         super(spawnPosition);
         this.amountOfLives = 3;
         this.hasPowerSphere = false;
-        this.keyboardListener = keyboardListener;
         this.score = new Score(0);
         this.consecutiveGhostEaten = 0;
     }
@@ -159,22 +157,22 @@ public class Pacman extends ACharacter implements  ICollisionSubscriber, IUpdate
      * Updates Pacman's state based on the keyboard input events.
      */
     @Override
-    public void notifySubscriber() {
-        List<String> inputs = keyboardListener.listen();
-        for (String input : inputs) {
-            switch (input) {
-                case "UP":
-                    up();
-                    break;
-                case "DOWN":
-                    down();
-                    break;
-                case "LEFT":
-                    left();
-                    break;
-                case "RIGHT":
-                    right();
-                    break;
+    public void doNotify(Keyboard keyboard) {
+
+        if(Objects.equals(keyboard.type(), "KeyPressed")) {
+            switch (keyboard.key()) {
+                    case "Up":
+                        up();
+                        break;
+                    case "Down":
+                        down();
+                        break;
+                    case "Left":
+                        left();
+                        break;
+                    case "Right":
+                        right();
+                        break;
             }
         }
     }
@@ -208,4 +206,8 @@ public class Pacman extends ACharacter implements  ICollisionSubscriber, IUpdate
         }
     }
 
+    @Override
+    public void notifySubscriber() {
+        //TODO: Implement the animation changing between the sprites.
+    }
 }
