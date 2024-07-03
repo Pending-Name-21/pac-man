@@ -24,7 +24,7 @@ jobs:
           cache: 'gradle'
 
       - name: Build using Gradle Wrapper
-        run: ./gradlew build --no-daemon
+        run: ./gradlew --no-daemon build -x test
 
   test:
     name: Test
@@ -36,6 +36,26 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
+      
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'adopt'
+          java-version: '17'
+          cache: 'gradle'
 
       - name: Run Tests using Gradle Wrapper
-        run: ./gradlew test --no-daemon
+        run: |
+          ./gradlew --no-daemon test jacocoTestReport -x assemble
+
+      - name: Publish coverage reports
+        uses: codecov/codecov-action@v4.0.1
+        with:
+          fail_ci_if_error: true 
+          file: ./app/build/reports/jacoco/test/jacocoTestReport.xml
+          name: pac-man
+          token: ${{ secrets.CODECOV_TOKEN }}
+          verbose: true
+          plugin: noop
+          os: linux
+          flags: unittests

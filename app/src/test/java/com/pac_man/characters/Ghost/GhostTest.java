@@ -13,6 +13,7 @@ import com.bridge.renderHandler.sprite.Size;
 import com.bridge.renderHandler.sprite.Sprite;
 import com.pac_man.characters.Pacman.Pacman;
 import com.pac_man.characters.Geometry.Position;
+import com.pac_man.characters.Ghost.Chasers.*;
 public class GhostTest {
     Ghost ghost;
     Pacman pacman;
