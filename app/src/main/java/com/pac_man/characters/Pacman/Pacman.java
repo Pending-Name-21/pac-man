@@ -159,7 +159,7 @@ public class Pacman extends ACharacter implements  ICollisionSubscriber, IUpdate
     @Override
     public void doNotify(Keyboard keyboard) {
 
-        if(Objects.equals(keyboard.type(), "KeyPressed")) {
+        if(keyboard.type().equals("KeyPressed")) {
             switch (keyboard.key()) {
                     case "Up":
                         up();
