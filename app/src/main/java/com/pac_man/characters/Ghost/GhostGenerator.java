@@ -53,7 +53,7 @@ public class GhostGenerator {
             case 2:
                 return new InkyChaser();
             case 3:
-                return new ClydeChaser();            
+                return new ClydeChaser();
             default:
                 return new ClydeChaser();
         }
@@ -71,25 +71,30 @@ public class GhostGenerator {
         switch (val) {
             case 0:
                 try {
-                    spriteBuilder.buildPath(projectPath + "/src/main/java/com/pac_man/Resources/Ghosts/Blinky/red1.png");
+
+                    spriteBuilder.buildPath("Ghosts/Blinky/red1.png");
+                    //spriteBuilder.buildPath(projectPath + "app/src/main/resources/Ghosts/Blinky/red1.png");
                 } catch (NonExistentFilePathException e) {
                     throw new RuntimeException(e);
                 }
             case 1:
                 try {
-                    spriteBuilder.buildPath(projectPath + "/src/main/java/com/pac_man/Resources/Ghosts/Pinky/pink1.png");
+                    spriteBuilder.buildPath("Ghosts/Pinky/pink1.png");
+                    //spriteBuilder.buildPath(projectPath + "app/src/main/resources/Ghosts/Pinky/pink1.png");
                 } catch (NonExistentFilePathException e) {
                     throw new RuntimeException(e);
                 }
             case 2:
                 try {
-                    spriteBuilder.buildPath(projectPath + "/src/main/java/com/pac_man/Resources/Ghosts/Inky/blue1.png");
+                    spriteBuilder.buildPath("Ghosts/Inky/blue1.png");
+                    //spriteBuilder.buildPath(projectPath + "app/src/main/resources/Ghosts/Inky/blue1.png");
                 } catch (NonExistentFilePathException e) {
                     throw new RuntimeException(e);
                 }
             case 3:
                 try {
-                    spriteBuilder.buildPath(projectPath + "/src/main/java/com/pac_man/Resources/Ghosts/Clyde/yell1.png");
+                    spriteBuilder.buildPath("Ghosts/Clyde/yell1.png");
+                    //spriteBuilder.buildPath(projectPath + "app/src/main/resources/Ghosts/Clyde/yell1.png");
                 } catch (NonExistentFilePathException e) {
                     throw new RuntimeException(e);
                 }

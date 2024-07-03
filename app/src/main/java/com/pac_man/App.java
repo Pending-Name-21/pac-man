@@ -23,33 +23,23 @@ public class App {
     }
 
     public static void main(String[] args) {
-        GameInitializer pacManGameInitializer = new GameInitializer();
+        GameInitializer gameInitializer = new GameInitializer();
 
 
-        PacManGameInitializer pacmanGame = new PacManGameInitializer();
-        pacManGameInitializer.subscribe(pacmanGame);
+        Game game = new Game(new AGameSettings() {
+            @Override
+            public boolean isGameOver() {
+                return false;
+            }
+        });
+
+        PacManGameInitializer pacmanGame = new PacManGameInitializer(game);
+        gameInitializer.subscribe(pacmanGame);
         try {
-            pacManGameInitializer.initializeSubscribers();
+            gameInitializer.initializeSubscribers();
         } catch (NotPossibleToInitializeSubscribersException e) {
             throw new RuntimeException(e);
         }
-
-        SoundRepository soundRepository = new SoundRepository();
-
-
-        Game game = new Game(
-                new InputVerifier(List.of(pacmanGame.getKeyboardEventManager())),
-                new AGameSettings() {
-                    @Override
-                    public boolean isGameOver() {
-                        return false;
-                    }
-                },
-                pacmanGame.getUpdatePublisher(),
-                new RenderManager(pacmanGame.getSpriteRepository(), soundRepository),
-                pacManGameInitializer
-
-        );
 
         try {
             game.run();

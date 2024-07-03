@@ -1,10 +1,14 @@
 package com.pac_man.Map;
 
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.bridge.renderHandler.sprite.Coord;
 import com.bridge.renderHandler.sprite.Size;
@@ -29,14 +33,19 @@ public class Maze {
         return maze;
     }
 
-    public void populateFromFile(String filePath) {
-        try {
-            List<String> lines = Files.readAllLines(Paths.get(filePath));
-            for (int i = 0; i < NUM_ROWS; i++) {
-                String line = lines.get(i);
-                for (int j = 0; j < NUM_COLS; j++) {
-                    char blockType = line.charAt(j);
-                    maze[i][j] = createBlock(blockType, i, j);
+    public void populateFromFile(String resourcePath) {
+        try (InputStream inputStream = getClass().getResourceAsStream(resourcePath)) {
+            if (inputStream == null) {
+                throw new IllegalArgumentException("File not found: " + resourcePath);
+            }
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+                List<String> lines = reader.lines().collect(Collectors.toList());
+                for (int i = 0; i < NUM_ROWS; i++) {
+                    String line = lines.get(i);
+                    for (int j = 0; j < NUM_COLS; j++) {
+                        char blockType = line.charAt(j);
+                        maze[i][j] = createBlock(blockType, i, j);
+                    }
                 }
             }
         } catch (IOException e) {
