@@ -7,6 +7,7 @@ import java.util.Random;
 import com.pac_man.Map.Maze;
 import com.pac_man.characters.Geometry.Position;
 import com.pac_man.characters.Geometry.Tuple;
+import com.pac_man.characters.Ghost.Chasers.*;
 import com.pac_man.characters.Utils.Utils;
 
 public class GhostGenerator {
