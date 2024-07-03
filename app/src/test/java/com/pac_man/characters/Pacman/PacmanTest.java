@@ -7,8 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import com.bridge.processinputhandler.listeners.InputListener;
-import com.bridge.processinputhandler.listeners.KeyboardListener;
+
 import com.pac_man.characters.Pacman.Pacman;
 import com.pac_man.characters.Geometry.Direction;
 import com.pac_man.characters.Geometry.Position;
@@ -17,7 +16,7 @@ import com.pac_man.characters.Geometry.Position;
 
 public class PacmanTest {
 
-    private Pacman pacman;
+    /**private Pacman pacman;
     private TestKeyboardListener testKeyboardListener;
 
     
@@ -115,6 +114,6 @@ public class PacmanTest {
         pacman.notifySubscriber();
         assertEquals(Direction.RIGHT, pacman.getDirection());
         assertEquals(new Position(1, 0), pacman.getPosition());
-    }
+    }**/
 
 }

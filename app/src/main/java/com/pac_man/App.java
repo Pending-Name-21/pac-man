@@ -3,12 +3,45 @@
  */
 package com.pac_man;
 
+import com.bridge.Game;
+import com.bridge.core.exceptions.GameException;
+import com.bridge.core.exceptions.initializerhandler.NotPossibleToInitializeSubscribersException;
+import com.bridge.gamesettings.AGameSettings;
+import com.bridge.initializerhandler.GameInitializer;
+import com.bridge.processinputhandler.InputVerifier;
+import com.bridge.processinputhandler.KeyboardEventManager;
+import com.bridge.renderHandler.render.RenderManager;
+import com.bridge.renderHandler.repository.SoundRepository;
+import com.pac_man.characters.Ghost.Ghost;
+import com.pac_man.characters.Pacman.Pacman;
+
+import java.util.List;
+
 public class App {
     public String getGreeting() {
         return "Hello World!";
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        GameInitializer gameInitializer = new GameInitializer();
+
+
+        Game game = new Game(new AGameSettings() {
+            @Override
+            public boolean isGameOver() {
+                return false;
+            }
+        });
+
+        PacManGameInitializer pacmanGame = new PacManGameInitializer(game);
+        gameInitializer.subscribe(pacmanGame);
+
+        try {
+            game.run();
+        } catch (GameException e) {
+            throw new RuntimeException(e);
+        }
+
+
     }
 }
