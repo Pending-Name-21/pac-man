@@ -13,7 +13,7 @@ import com.bridge.renderHandler.sprite.Sprite;
 public class Maze {
     private static final int NUM_ROWS = 21;
     private static final int NUM_COLS = 19;
-    
+    private String projectPath = Paths.get("").toAbsolutePath().toString();
     private IBlock[][] maze;
 
     public Maze() {
@@ -47,9 +47,9 @@ public class Maze {
     private IBlock createBlock(char blockType, int x, int y) {
         switch (blockType) {
             case 'S':
-                return new StepBlock(new Sprite(new Coord(x, y), 0, new Size(1, 1), Paths.get("app/src/main/Resources/general/StepBlock.png")));
+                return new StepBlock(new Sprite(new Coord(x, y), 0, new Size(1, 1), Paths.get(projectPath + "/src/main/Resources/general/StepBlock.png")));
             case 'W':
-                return new WallBlock(new Sprite(new Coord(x, y), 0, new Size(1, 1), Paths.get("app/src/main/Resources/general/wall.png")));
+                return new WallBlock(new Sprite(new Coord(x, y), 0, new Size(1, 1), Paths.get(projectPath + "/src/main/Resources/general/wall.png")));
             case 'P':
                 return new SpawnBlock(new Sprite(new Coord(x, y), 0, new Size(1, 1), Paths.get("")));
             default:

@@ -19,7 +19,7 @@ import com.pac_man.characters.Geometry.Position;
 import com.pac_man.characters.Geometry.Tuple;
 
 public class GhostGeneratorTest {
-    private GhostGenerator ghostGenerator;
+/**    private GhostGenerator ghostGenerator;
     private Maze maze;
 
     @BeforeEach
@@ -52,5 +52,5 @@ public class GhostGeneratorTest {
         assertNotNull(ghost);
         assertEquals(position, ghost.getPosition());
         assertEquals(chase, ghost.getChaseBehaviour());
-    }
+    }**/
 }

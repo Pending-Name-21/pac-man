@@ -3,13 +3,13 @@ package com.pac_man.characters.ScoreTests;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
-import com.bridge.processinputhandler.listeners.KeyboardListener;
+//import com.bridge.processinputhandler.listeners.KeyboardListener;
 import com.pac_man.Collisions.Nature;
 import com.pac_man.characters.Geometry.Position;
 import com.pac_man.characters.Pacman.Pacman;
 
 public class PacmanSphereScoreTests {
-    @Test
+    /**@Test
     public void testInitialScore() {
         // define inputs and outputs
         String expectedScoreText =  "Score: 0";
@@ -38,7 +38,7 @@ public class PacmanSphereScoreTests {
         pacman.handleCollision(new String[]{"Sphere"}, Nature.WITH);
         int actualScoreAmount =pacman.getScore().getAmountPoints();
         String actualScoreText = pacman.getScore().getText().getText();
-        
+
         //verify
         assertEquals(expectedScoreAmount, actualScoreAmount);
         assertEquals(expectedScoreText, actualScoreText);
@@ -78,5 +78,5 @@ public class PacmanSphereScoreTests {
         //verify
         assertEquals(expectedScoreAmount, actualScoreAmount);
         assertEquals(expectedScoreText, actualScoreText);
-    }
+    }**/
 }

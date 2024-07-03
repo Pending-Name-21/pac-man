@@ -11,6 +11,7 @@ import com.bridge.initializerhandler.GameInitializer;
 import com.bridge.processinputhandler.InputVerifier;
 import com.bridge.processinputhandler.KeyboardEventManager;
 import com.bridge.renderHandler.render.RenderManager;
+import com.bridge.renderHandler.repository.SoundRepository;
 import com.pac_man.characters.Ghost.Ghost;
 import com.pac_man.characters.Pacman.Pacman;
 
@@ -33,6 +34,7 @@ public class App {
             throw new RuntimeException(e);
         }
 
+        SoundRepository soundRepository = new SoundRepository();
 
 
         Game game = new Game(
@@ -44,7 +46,7 @@ public class App {
                     }
                 },
                 pacmanGame.getUpdatePublisher(),
-                new RenderManager(null, null),
+                new RenderManager(pacmanGame.getSpriteRepository(), soundRepository),
                 pacManGameInitializer
 
         );
