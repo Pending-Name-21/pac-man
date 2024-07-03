@@ -17,8 +17,6 @@ dependencies {
     testImplementation(libs.junit.jupiter)
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     testRuntimeOnly("bridge:bridge-0.0.0-alpha.0.2.0")
-    implementation(libs.guava)
-
 }
 
 java {

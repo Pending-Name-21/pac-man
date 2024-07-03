@@ -35,11 +35,6 @@ public class App {
 
         PacManGameInitializer pacmanGame = new PacManGameInitializer(game);
         gameInitializer.subscribe(pacmanGame);
-        try {
-            gameInitializer.initializeSubscribers();
-        } catch (NotPossibleToInitializeSubscribersException e) {
-            throw new RuntimeException(e);
-        }
 
         try {
             game.run();

@@ -43,7 +43,7 @@ public class PacManGameInitializer implements IIinitializerSubscriber {
             pacManSprite.buildPath("PacMan/pr1.png");
             //pacManSprite.buildPath(projectPath + "app/src/main/resources/PacMan/pr1.png");
         } catch (NonExistentFilePathException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
 
         this.pacman = new Pacman(
@@ -56,8 +56,6 @@ public class PacManGameInitializer implements IIinitializerSubscriber {
         SpriteBuilder ghostBuilder = setGhostsSprites();
         GhostGenerator generator = new GhostGenerator(ghostBuilder, pacman);
         generator.populate(maze);
-
-
     }
 
 
