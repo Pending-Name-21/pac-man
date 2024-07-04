@@ -103,8 +103,6 @@ public class GhostTest {
         int x = ghost.getPosition().getX();
         int y = ghost.getPosition().getY();
         ghost.flee();
-
-        //The conditinal here is because flee will randonmically change x or y to flee
         if (x == ghost.getPosition().getX())assertNotEquals(y, ghost.getPosition().getY());    
         else assertNotEquals(x, ghost.getPosition().getX());
     }

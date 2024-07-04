@@ -1,4 +1,4 @@
-package com.pac_man;
+package com.pac_man.Maze;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -27,8 +27,7 @@ public class MazeTest {
 
     @Test
     void testPopulateFromFile() {
-        String resourcePath = "MazeElement/Map.txt";        
-        // Populate the maze from the file
+        String resourcePath = "app/src/main/java/com/pac_man/Resources/MazeElement/Map.txt";        
         maze.populateFromFile(resourcePath);
 
         IBlock[][] blocks = maze.getBlocks();

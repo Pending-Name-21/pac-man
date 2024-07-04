@@ -1,4 +1,4 @@
-package com.pac_man;
+package com.pac_man.Maze;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;

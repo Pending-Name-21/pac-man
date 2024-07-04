@@ -1,7 +1,8 @@
-package com.pac_man;
+package com.pac_man.Geometry;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 import com.pac_man.characters.Geometry.Position;
 

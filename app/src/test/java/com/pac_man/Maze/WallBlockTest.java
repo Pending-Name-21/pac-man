@@ -1,4 +1,4 @@
-package com.pac_man;
+package com.pac_man.Maze;
 
 import java.nio.file.Paths;
 
@@ -23,7 +23,7 @@ public class WallBlockTest {
 
     @BeforeEach
     void setUp() {
-        sprite = new Sprite(new Coord(0, 0), new Size(1, 1), Paths.get("path/to/wallblock.png"));
+        sprite = new Sprite(new Coord(0, 0), new Size(1, 1), Paths.get(""));
         wallBlock = new WallBlock(sprite);
     }
 

@@ -115,4 +115,19 @@ public class PacmanTest {
         assertEquals(new Position(1, 0), pacman.getPosition());
     }
 
+
+    @Test
+    void testConsumeSphereIncreasesScore() {
+        pacman.consumeSphere();
+        assertEquals(10, pacman.getScore().getAmountPoints()); 
+    }
+    
+    @Test
+    void testConsumeGhostWithPowerSphere() {
+        pacman.setPowerSphere(true);
+        pacman.consumeGhost();
+        assertEquals(15, pacman.getScore().getAmountPoints()); 
+    }
+
+
 }
