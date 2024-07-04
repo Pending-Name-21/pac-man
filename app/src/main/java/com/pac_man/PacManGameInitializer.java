@@ -3,11 +3,7 @@ package com.pac_man;
 import com.bridge.Game;
 import com.bridge.core.exceptions.renderHandlerExceptions.NonExistentFilePathException;
 import com.bridge.initializerhandler.IIinitializerSubscriber;
-import com.bridge.processinputhandler.KeyboardEventManager;
 import com.bridge.renderHandler.builders.SpriteBuilder;
-import com.bridge.renderHandler.repository.SpriteRepository;
-import com.bridge.renderHandler.sound.Sound;
-import com.bridge.updatehandler.UpdatePublisher;
 import com.pac_man.Map.Maze;
 import com.pac_man.characters.Geometry.Position;
 import com.pac_man.characters.Ghost.*;
@@ -26,7 +22,7 @@ public class PacManGameInitializer implements IIinitializerSubscriber {
 
     public void init() {
 
-        game.getKeyboardEventManager().subscribe(pacman);
+        /**game.getKeyboardEventManager().subscribe(pacman);
         Maze maze = new Maze();
 
         //String aux= projectPath + "app/src/main/resources/MazeElement/Map.txt";
@@ -40,7 +36,7 @@ public class PacManGameInitializer implements IIinitializerSubscriber {
         pacManSprite.buildCoord(0, 0);
         pacManSprite.buildSize(10, 10);
         try {
-            pacManSprite.buildPath("PacMan/pr1.png");
+            pacManSprite.buildPath("/home/fundacion/projects/pac-man/app/src/main/resources/PacMan/pr1.png");
             //pacManSprite.buildPath(projectPath + "app/src/main/resources/PacMan/pr1.png");
         } catch (NonExistentFilePathException e) {
             e.printStackTrace();
@@ -56,6 +52,28 @@ public class PacManGameInitializer implements IIinitializerSubscriber {
         SpriteBuilder ghostBuilder = setGhostsSprites();
         GhostGenerator generator = new GhostGenerator(ghostBuilder, pacman);
         generator.populate(maze);
+         **/
+
+
+
+        SpriteBuilder pacManSprite = new SpriteBuilder(game.getSpriteIRepository());
+        pacManSprite.buildCoord(50, 50);
+        pacManSprite.buildSize(10, 10);
+        try {
+            pacManSprite.buildPath("/home/fundacion/projects/pac-man/app/src/main/resources/PacMan/pr1.png");
+            //pacManSprite.buildPath(projectPath + "app/src/main/resources/PacMan/pr1.png");
+        } catch (NonExistentFilePathException e) {
+            e.printStackTrace();
+        }
+
+        this.pacman = new Pacman(
+                new Position(0, 0),
+                pacManSprite.assemble()
+        );
+
+        game.getUpdatePublisher().subscribe(pacman);
+
+
     }
 
 

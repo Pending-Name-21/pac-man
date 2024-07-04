@@ -12,6 +12,7 @@ import com.pac_man.characters.Geometry.Position;
 import com.pac_man.characters.Geometry.Tuple;
 import com.pac_man.characters.Pacman.Pacman;
 import com.pac_man.characters.Utils.Utils;
+import com.pac_man.characters.Ghost.Chasers.*;
 
 public class GhostGenerator {
 

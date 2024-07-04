@@ -1,9 +1,10 @@
-package com.pac_man.characters.Ghost;
+package com.pac_man.characters.Ghost.Chasers;
 
 import com.pac_man.characters.Geometry.Direction;
 import com.pac_man.characters.Geometry.Position;
+import com.pac_man.characters.Ghost.IChase;
 
-public class ClydeChaser implements IChase{
+public class ClydeChaser implements IChase {
     private static final int DISTANCE_TARGET = 8;
     private static final Position CORNER_TARGET = new Position(0, 0);
 
