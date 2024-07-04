@@ -1,18 +1,23 @@
 package com.pac_man.characters.Ghost;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-
 import java.nio.file.Paths;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import com.bridge.processinputhandler.listeners.KeyboardListener;
 import com.bridge.renderHandler.sprite.Coord;
 import com.bridge.renderHandler.sprite.Size;
 import com.bridge.renderHandler.sprite.Sprite;
-import com.pac_man.characters.Pacman.Pacman;
 import com.pac_man.characters.Geometry.Position;
+import com.pac_man.characters.Ghost.Chasers.BlinkyChaser;
+import com.pac_man.characters.Ghost.Chasers.ClydeChaser;
+import com.pac_man.characters.Ghost.Chasers.InkyChaser;
+import com.pac_man.characters.Ghost.Chasers.PinkyChaser;
+import com.pac_man.characters.Pacman.Pacman;
+
 public class GhostTest {
     Ghost ghost;
     Pacman pacman;

@@ -1,15 +1,13 @@
 package com.pac_man.characters.Pacman;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import com.bridge.processinputhandler.listeners.InputListener;
+
 import com.bridge.processinputhandler.listeners.KeyboardListener;
-import com.pac_man.characters.Pacman.Pacman;
 import com.pac_man.characters.Geometry.Direction;
 import com.pac_man.characters.Geometry.Position;
 

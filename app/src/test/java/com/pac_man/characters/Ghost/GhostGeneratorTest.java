@@ -1,11 +1,10 @@
 package com.pac_man.characters.Ghost;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import java.util.List;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,6 +13,7 @@ import com.pac_man.Map.Maze;
 import com.pac_man.Map.TestingBlock;
 import com.pac_man.characters.Geometry.Position;
 import com.pac_man.characters.Geometry.Tuple;
+import com.pac_man.characters.Ghost.Chasers.BlinkyChaser;
 
 public class GhostGeneratorTest {
     private GhostGenerator ghostGenerator;
